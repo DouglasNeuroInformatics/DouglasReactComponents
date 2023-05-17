@@ -6,20 +6,16 @@ export interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button
   icon?: React.ReactElement;
   iconPosition?: 'left' | 'right';
   label: string;
-  size?: 'sm' | 'md' | 'lg';
   variant?: 'dark' | 'light' | 'red';
 }
 
 export const Button = React.forwardRef(function Button(
-  { className, icon, label, iconPosition = 'left', size = 'md', variant = 'dark', ...props }: ButtonProps,
+  { className, icon, label, iconPosition = 'left', variant = 'dark', ...props }: ButtonProps,
   ref?: ForwardedRef<HTMLButtonElement>
 ) {
   return (
     <button
-      className={clsx(className, 'btn', {
-        'py-2 px-4 text-sm': size === 'sm',
-        'text-md py-2 px-6': size === 'md',
-        'py-3 px-8 text-lg': size === 'lg',
+      className={clsx(className, 'btn text-md py-2 px-6', {
         'btn-dark': variant === 'dark',
         'btn-light': variant === 'light',
         'btn-red': variant === 'red'

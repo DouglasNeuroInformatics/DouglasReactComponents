@@ -19,3 +19,10 @@ export const Light: Story = {
     variant: 'light'
   }
 };
+
+export const Red: Story = {
+  args: {
+    label: 'Red Button',
+    variant: 'red'
+  }
+};
