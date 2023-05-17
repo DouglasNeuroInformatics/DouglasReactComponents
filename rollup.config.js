@@ -4,6 +4,7 @@ import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import postcss from 'rollup-plugin-postcss';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 import pkg from './package.json' assert { type: 'json' };
 
@@ -36,6 +37,7 @@ export default [
           insertAt: 'top'
         }
       }),
+      peerDepsExternal(),
       terser()
     ]
   },
