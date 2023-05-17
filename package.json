@@ -1,18 +1,30 @@
 {
-  "name": "@douglasneuroinformatics/ui",
+  "name": "@douglasneuroinformatics/component-library",
   "version": "0.0.1",
   "description": "React components for DNP projects",
-  "main": "index.js",
   "repository": "https://github.com/DouglasNeuroInformatics/UI.git",
   "author": "joshunrau <contact@joshuaunrau.com>",
   "license": "AGPL-3.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "rollup": "rollup -c"
+  },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-typescript": "^11.1.1",
     "@types/react": "^18.2.6",
     "@typescript-eslint/eslint-plugin": "^5.59.6",
     "@typescript-eslint/parser": "^5.59.6",
     "eslint": "^8.40.0",
     "eslint-plugin-react": "^7.32.2",
     "react": "^18.2.0",
+    "rollup": "^3.22.0",
+    "rollup-plugin-dts": "^5.3.0",
+    "tslib": "^2.5.0",
     "typescript": "^5.0.4"
   }
 }
