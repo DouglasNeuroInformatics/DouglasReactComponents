@@ -13,5 +13,5 @@ yarn add @douglasneuroinformatics/react-components
 ### Compile Library
 
 ```shell
-yarn rollup
+yarn build
 ```
