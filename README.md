@@ -1,11 +1,11 @@
-# UI
+# React Component Library for DNP Projects
 
 This repository houses generic, reusable React components for DNP projects.
 
 ## Install
 
 ```shell
-npm install @douglasneuroinformatics/ui
+yarn add @douglasneuroinformatics/react-components
 ```
 
 ## Development
