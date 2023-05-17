@@ -1,0 +1,14 @@
+{
+  "name": "@douglasneuroinformatics/ui",
+  "version": "0.0.1",
+  "description": "React components for DNP projects",
+  "main": "index.js",
+  "repository": "https://github.com/DouglasNeuroInformatics/UI.git",
+  "author": "joshunrau <contact@joshuaunrau.com>",
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "react": "^18.2.0",
+    "typescript": "^5.0.4"
+  }
+}
