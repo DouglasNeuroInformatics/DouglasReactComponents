@@ -29,7 +29,7 @@ export default [
       typescript({ tsconfig: './tsconfig.json' }),
       postcss({
         config: {
-          path: './postcss.config.js'
+          path: './postcss.config.mjs'
         },
         extensions: ['.css'],
         minimize: true,
