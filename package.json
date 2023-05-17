@@ -1,5 +1,5 @@
 {
-  "name": "@douglasneuroinformatics/component-library",
+  "name": "@douglasneuroinformatics/react-components",
   "version": "0.0.1",
   "description": "React components for DNP projects",
   "type": "module",
