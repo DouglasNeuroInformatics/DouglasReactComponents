@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rm -rf dist && rollup -c",
     "build-storybook": "storybook build",
     "storybook": "storybook dev -p 6006"
   },
