@@ -10,7 +10,8 @@
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "tailwind.utils.cjs"
   ],
   "scripts": {
     "build": "rm -rf dist && rollup -c",
