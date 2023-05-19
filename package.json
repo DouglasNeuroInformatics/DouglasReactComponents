@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "rm -rf dist && rollup -c",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build -o docs",
     "lint": "eslint --fix src",
     "storybook": "storybook dev -p 6006",
     "test": "jest"
