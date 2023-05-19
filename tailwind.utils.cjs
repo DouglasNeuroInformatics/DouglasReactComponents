@@ -12,12 +12,13 @@ const isDev = fs.existsSync(srcDir);
 const baseContentPath = isDev ? path.join(srcDir, '**/*.{js,ts,jsx,tsx}') : path.join(distDir, '**/*.js');
 
 /**
- * @param {string[]} content
+ * @param {Object} [options]
+ * @param {string[]} [options.content]
  * @returns {import('tailwindcss').Config}
  */
-function createConfig(content = []) {
+function createConfig(options) {
   return {
-    content: [baseContentPath, ...content],
+    content: [baseContentPath, ...(options?.content ? options.content : [])],
     theme: {
       extend: {}
     },
