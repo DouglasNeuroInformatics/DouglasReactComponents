@@ -8,6 +8,19 @@ This repository houses generic, reusable React components for DNP projects.
 yarn add @douglasneuroinformatics/react-components
 ```
 
+## Usage
+
+**tailwind.config.js**
+
+```javascript
+import { createConfig } from '@douglasneuroinformatics/react-components/tailwind.utils.cjs';
+
+export default createConfig({
+  content: ['./src/**/*.{ts,tsx}']
+});
+
+```
+
 ## Development
 
 ### Compile Library
