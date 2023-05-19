@@ -61,5 +61,9 @@
   },
   "dependencies": {
     "clsx": "^1.2.1"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
   }
 }
