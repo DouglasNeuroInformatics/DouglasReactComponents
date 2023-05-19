@@ -60,6 +60,7 @@
     "vite": "^4.3.7"
   },
   "dependencies": {
+    "@heroicons/react": "^2.0.18",
     "clsx": "^1.2.1"
   },
   "sideEffects": false,
