@@ -39,7 +39,9 @@ function createConfig(options) {
             '@apply bg-red-600 hover:bg-red-500 text-white': {}
           }
         });
-      })
+      }),
+      require('@headlessui/tailwindcss'),
+      require('@tailwindcss/container-queries')
     ]
   };
 }
