@@ -27,7 +27,8 @@
   "dependencies": {
     "@douglasneuroinformatics/utils": "^0.1.4",
     "@heroicons/react": "^2.0.18",
-    "clsx": "^1.2.1"
+    "clsx": "^1.2.1",
+    "framer-motion": "^10.12.14"
   },
   "devDependencies": {
     "@douglasneuroinformatics/eslint-config": "^0.0.4",
