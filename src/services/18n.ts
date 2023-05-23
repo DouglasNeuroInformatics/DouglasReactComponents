@@ -1,11 +1,11 @@
 import { createInstance } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-const defaultNS = 'ns1';
+const defaultNS = 'translations';
 
 const resources = {
   en: {
-    translation: {
+    translations: {
       'datetime.days': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       'datetime.months': [
         'January',
@@ -24,7 +24,7 @@ const resources = {
     }
   },
   fr: {
-    translation: {
+    translations: {
       'datetime.days': ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
       'datetime.months': [
         'Janvier',
@@ -45,12 +45,14 @@ const resources = {
 } as const;
 
 const i18n = createInstance({
+  defaultNS,
+  resources,
   fallbackLng: 'en',
   supportedLngs: ['en', 'fr'],
   interpolation: {
     escapeValue: false
   },
-  resources
+  returnObjects: true
 });
 
 void i18n.use(initReactI18next).init();
