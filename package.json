@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@douglasneuroinformatics/utils": "^0.1.4",
+    "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
     "clsx": "^1.2.1",
     "framer-motion": "^10.12.14",
