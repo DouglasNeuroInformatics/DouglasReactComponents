@@ -25,6 +25,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@douglasneuroinformatics/utils": "^0.1.4",
     "@heroicons/react": "^2.0.18",
     "clsx": "^1.2.1"
   },
