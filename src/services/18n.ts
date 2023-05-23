@@ -20,7 +20,8 @@ const resources = {
         'October',
         'November',
         'December'
-      ]
+      ],
+      'searchBar.placeholder': 'Search...'
     }
   },
   fr: {
@@ -40,7 +41,8 @@ const resources = {
         'Novembre',
         'Décembre'
       ]
-    }
+    },
+    'searchBar.placeholder': 'Rechercher...'
   }
 } as const;
 

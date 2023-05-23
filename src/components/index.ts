@@ -5,4 +5,5 @@ export * from './Divider';
 export * from './Dropdown';
 export * from './LineGraph';
 export * from './Modal';
+export * from './SearchBar';
 export * from './SelectDropdown';
