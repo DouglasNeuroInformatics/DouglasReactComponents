@@ -21,6 +21,11 @@ const resources = {
         'November',
         'December'
       ],
+      'form.errors.required': 'This field is required',
+      'form.radio.labels.false': 'False',
+      'form.radio.labels.true': 'True',
+      'form.reset': 'Clear',
+      'form.submit': 'Submit',
       'searchBar.placeholder': 'Search...'
     }
   },
@@ -42,6 +47,11 @@ const resources = {
         'Décembre'
       ]
     },
+    'form.errors.required': 'Ce champ est obligatoire',
+    'form.radio.labels.false': 'Faux',
+    'form.radio.labels.true': 'Vrai',
+    'form.reset': 'Réinitialiser',
+    'form.submit': 'Soumettre',
     'searchBar.placeholder': 'Rechercher...'
   }
 } as const;

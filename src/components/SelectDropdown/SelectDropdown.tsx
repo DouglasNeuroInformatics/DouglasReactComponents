@@ -32,7 +32,6 @@ export const SelectDropdown = <T extends SelectOption>({
   setSelected
 }: SelectDropdownProps<T>) => {
   // Here we specify the key prop of objects for comparison
-  console.log(selected);
   return (
     <Listbox
       multiple
