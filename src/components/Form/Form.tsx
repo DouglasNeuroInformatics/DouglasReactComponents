@@ -106,6 +106,6 @@ const FormComponent = <T extends FormInstrumentData>({
   );
 };
 
-export const Form = withI18nProvider(FormComponent) as typeof FormComponent;
+const Form = withI18nProvider(FormComponent) as typeof FormComponent;
 
-export { FormProps };
+export { Form, type FormProps };
