@@ -73,6 +73,26 @@ function createConfig(options) {
           },
           '.btn-red': {
             '@apply bg-red-600 hover:bg-red-500 text-white': {}
+          },
+          '.field-input-base': {
+            '@apply w-full bg-transparent py-2 text-left text-slate-900 hover:border-slate-300 focus:border-indigo-800 focus:outline-none':
+              {},
+            minHeight: '42px'
+          },
+          '.field-header': {
+            '@apply font-medium text-slate-600': {}
+          },
+          '.field-input': {
+            ' @apply field-input-base border-b-2': {}
+          },
+          '.field-label': {
+            '@apply pointer-events-none text-slate-600': {}
+          },
+          '.field-label-floating': {
+            '@apply field-label absolute left-0 transition-all': {}
+          },
+          '.field-label-floating--active': {
+            '@apply -translate-y-5 text-sm text-indigo-800': {}
           }
         });
       }),
