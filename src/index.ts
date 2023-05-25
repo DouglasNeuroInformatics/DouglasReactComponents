@@ -1,2 +1,2 @@
 export * from './components';
-export * from './hooks/useStepper';
+export * from './hooks';
