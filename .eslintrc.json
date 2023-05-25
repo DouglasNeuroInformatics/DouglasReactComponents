@@ -3,6 +3,7 @@
   "env": {
     "browser": true
   },
+  "ignorePatterns": ["dist/**/*"],
   "parserOptions": {
     "project": ["./tsconfig.json"]
   },

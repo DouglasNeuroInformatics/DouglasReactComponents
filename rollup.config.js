@@ -19,13 +19,16 @@ export default [
     input: 'src/index.ts',
     output: [
       {
-        banner: "'use client;'",
+        banner: "'use client';",
+        exports: 'named',
         file: pkg.main,
         format: 'cjs',
         sourcemap: true
       },
       {
+        banner: "'use client';",
         file: pkg.module,
+        exports: 'named',
         format: 'esm',
         sourcemap: true
       }
