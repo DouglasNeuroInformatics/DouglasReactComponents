@@ -1,3 +1,5 @@
+// @ts-check
+
 import fs from 'node:fs';
 
 import commonjs from '@rollup/plugin-commonjs';
@@ -9,13 +11,15 @@ import dts from 'rollup-plugin-dts';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 
-const pkg = JSON.parse(fs.readFileSync('package.json'));
+const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
 
+/* @type {import('rollup').RollupOptions[]} */
 export default [
   {
     input: 'src/index.ts',
     output: [
       {
+        banner: "'use client;'",
         file: pkg.main,
         format: 'cjs',
         sourcemap: true
@@ -33,7 +37,8 @@ export default [
       typescript({ tsconfig: './tsconfig.json' }),
       postcss({
         config: {
-          path: './postcss.config.mjs'
+          path: './postcss.config.mjs',
+          ctx: undefined
         },
         extensions: ['.css'],
         minimize: true,
@@ -41,8 +46,8 @@ export default [
           insertAt: 'top'
         }
       }),
-      peerDepsExternal(),
-      terser()
+      peerDepsExternal()
+      // terser()
     ]
   },
   {
