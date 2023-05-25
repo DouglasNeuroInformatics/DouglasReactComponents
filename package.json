@@ -1,6 +1,6 @@
 {
   "name": "@douglasneuroinformatics/react-components",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "React components for DNP projects",
   "type": "module",
   "repository": "https://github.com/DouglasNeuroInformatics/DouglasReactComponents.git",
