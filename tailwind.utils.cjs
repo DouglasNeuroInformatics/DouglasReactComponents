@@ -24,6 +24,16 @@ function createConfig(options) {
         animation: {
           spinner: 'spinner-spin 1.7s infinite ease, spinner-round 1.7s infinite ease'
         },
+        container: {
+          center: true,
+          padding: {
+            DEFAULT: '1rem',
+            sm: '2rem',
+            lg: '4rem',
+            xl: '5rem',
+            '2xl': '6rem'
+          }
+        },
         keyframes: {
           'spinner-round': {
             '0%': { transform: 'rotate(0deg)' },
