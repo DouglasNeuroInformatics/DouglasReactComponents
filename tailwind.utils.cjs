@@ -93,7 +93,7 @@ function createConfig(options) {
             '@apply font-medium text-slate-600': {}
           },
           '.field-input': {
-            ' @apply field-input-base border-b-2': {}
+            '@apply field-input-base border-b-2': {}
           },
           '.field-label': {
             '@apply pointer-events-none text-slate-600': {}

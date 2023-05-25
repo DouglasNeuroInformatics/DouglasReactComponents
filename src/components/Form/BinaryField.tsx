@@ -19,7 +19,7 @@ const Checkbox = (props: InnerProps) => (
     </label>
     <div className="field-input-base">
       <Switch checked={Boolean(props.value)} className="w-fit border" onChange={props.setValue}>
-        <CheckIcon className="ui-checked:visible invisible" />
+        <CheckIcon className="ui-checked:visible invisible w-4 h-4" />
       </Switch>
     </div>
   </>
