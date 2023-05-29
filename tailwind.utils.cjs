@@ -19,6 +19,7 @@ const baseContentPath = isDev ? path.join(srcDir, '**/*.{js,ts,jsx,tsx}') : path
 function createConfig(options) {
   return {
     content: [baseContentPath, ...(options?.content ? options.content : [])],
+    darkMode: 'class',
     theme: {
       extend: {
         animation: {
