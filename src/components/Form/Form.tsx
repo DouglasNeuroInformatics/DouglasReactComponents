@@ -87,7 +87,9 @@ const FormComponent = <T extends FormInstrumentData>({
                   <div className="mb-5">
                     <h3 className="mb-2 font-semibold">{fieldGroup.title}</h3>
                     {fieldGroup.description && (
-                      <small className="text-sm italic text-slate-500">{fieldGroup.description}</small>
+                      <small className="text-sm italic text-slate-600 dark:text-slate-300">
+                        {fieldGroup.description}
+                      </small>
                     )}
                   </div>
                   {renderFormFields(fieldGroup.fields as FormFields<T>)}

@@ -21,7 +21,7 @@ export const Button = React.forwardRef(function Button(
         'py-2 px-4 text-sm': size === 'sm',
         'text-md py-2 px-6': size === 'md',
         'py-3 px-8 text-lg': size === 'lg',
-        'btn-primary': variant === 'primary',
+        'btn-primary dark:bg-sky-700 dark:hover:bg-sky-600': variant === 'primary',
         'btn-secondary': variant === 'secondary',
         'btn-danger': variant === 'danger'
       })}
