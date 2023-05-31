@@ -3,15 +3,16 @@ import React, { ForwardedRef } from 'react';
 import { clsx } from 'clsx';
 
 export interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'children'> {
+  disabled?: boolean;
   icon?: React.ReactElement;
   iconPosition?: 'left' | 'right';
   label: string;
   size?: 'sm' | 'md' | 'lg';
-  variant?: 'dark' | 'light' | 'red';
+  variant?: 'primary' | 'secondary' | 'danger';
 }
 
 export const Button = React.forwardRef(function Button(
-  { className, icon, label, iconPosition = 'left', size = 'md', variant = 'dark', ...props }: ButtonProps,
+  { disabled, className, icon, label, iconPosition = 'left', size = 'md', variant = 'dark', ...props }: ButtonProps,
   ref?: ForwardedRef<HTMLButtonElement>
 ) {
   return (
@@ -20,10 +21,11 @@ export const Button = React.forwardRef(function Button(
         'py-2 px-4 text-sm': size === 'sm',
         'text-md py-2 px-6': size === 'md',
         'py-3 px-8 text-lg': size === 'lg',
-        'btn-dark': variant === 'dark',
-        'btn-light': variant === 'light',
-        'btn-red': variant === 'red'
+        'btn-primary': variant === 'primary',
+        'btn-secondary': variant === 'secondary',
+        'btn-danger': variant === 'danger'
       })}
+      disabled={disabled}
       ref={ref}
       {...props}
     >

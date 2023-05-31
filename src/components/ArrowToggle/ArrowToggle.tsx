@@ -20,47 +20,49 @@ export interface ArrowToggleProps extends Omit<React.ComponentPropsWithoutRef<'b
   arrowSize?: number;
 }
 
-export const ArrowToggle = React.forwardRef<HTMLButtonElement, ArrowToggleProps>(
-  ({ className, position, rotation, onClick, content, contentPosition, arrowSize, ...props }, ref) => {
-    const [isToggled, setIsToggled] = useState(false);
-    const computedRotation = useMemo(() => {
-      const toggleRotation = isToggled ? rotation : 0;
-      switch (position) {
-        case 'up':
-          return 0 + toggleRotation;
-        case 'right':
-          return 90 + toggleRotation;
-        case 'down':
-          return 180 + toggleRotation;
-        case 'left':
-          return 270 + toggleRotation;
-      }
-    }, [position, rotation, isToggled]);
+export const ArrowToggle = React.forwardRef<HTMLButtonElement, ArrowToggleProps>(function ArrowToggle(
+  { className, position, rotation, onClick, content, contentPosition, arrowSize, ...props },
+  ref
+) {
+  const [isToggled, setIsToggled] = useState(false);
+  const computedRotation = useMemo(() => {
+    const toggleRotation = isToggled ? rotation : 0;
+    switch (position) {
+      case 'up':
+        return 0 + toggleRotation;
+      case 'right':
+        return 90 + toggleRotation;
+      case 'down':
+        return 180 + toggleRotation;
+      case 'left':
+        return 270 + toggleRotation;
+    }
+  }, [position, rotation, isToggled]);
 
-    const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-      setIsToggled(!isToggled);
-      if (onClick) {
-        onClick(event);
-      }
-    };
+  const handleClick: React.MouseEventHandler<HTMLButtonElement> = (event) => {
+    setIsToggled(!isToggled);
+    if (onClick) {
+      onClick(event);
+    }
+  };
 
-    return (
-      <button
-        className={clsx('flex items-center justify-center', className)}
-        type="button"
-        onClick={handleClick}
-        {...props}
-      >
-        {content && contentPosition === 'left' && <span className="mr-1">{content}</span>}
-        <ChevronUpIcon
-          className="transform-gpu transition-transform"
-          data-testid="arrow-up-icon"
-          height={arrowSize ?? 16}
-          style={{ transform: `rotate(${computedRotation}deg)` }}
-          width={arrowSize ?? 16}
-        />
-        {content && contentPosition === 'right' && <span className="ml-1">{content}</span>}
-      </button>
-    );
-  }
-);
+  return (
+    <button
+      className={clsx('flex items-center justify-center', className)}
+      ref={ref}
+      type="button"
+      onClick={handleClick}
+      {...props}
+    >
+      {content && contentPosition === 'left' && <span className="mr-1">{content}</span>}
+      <ChevronUpIcon
+        className="transform-gpu transition-transform"
+        data-testid="arrow-up-icon"
+        height={arrowSize ?? 16}
+        style={{ transform: `rotate(${computedRotation}deg)` }}
+        width={arrowSize ?? 16}
+      />
+      {content && contentPosition === 'right' && <span className="ml-1">{content}</span>}
+    </button>
+  );
+});

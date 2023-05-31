@@ -9,7 +9,7 @@ describe('ArrowToggle', () => {
     render(<ArrowToggle position="up" rotation={180} />);
 
     const btn = screen.getByRole('button');
-    const svg = screen.getByTestId('arrow-up-icon');
+    //const svg = screen.getByTestId('arrow-up-icon');
 
     //expect(svg).toHaveStyle({ transform: 'rotate(0deg)' });
     fireEvent.click(btn);

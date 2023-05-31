@@ -6,23 +6,23 @@ type Story = StoryObj<typeof Button>;
 
 export default { component: Button } as Meta<typeof Button>;
 
-export const Dark: Story = {
+export const Primary: Story = {
   args: {
-    label: 'Dark Button',
-    variant: 'dark'
+    label: 'Primary Button',
+    variant: 'primary'
   }
 };
 
-export const Light: Story = {
+export const Secondary: Story = {
   args: {
-    label: 'Light Button',
-    variant: 'light'
+    label: 'Secondary Button',
+    variant: 'secondary'
   }
 };
 
-export const Red: Story = {
+export const Danger: Story = {
   args: {
-    label: 'Red Button',
-    variant: 'red'
+    label: 'Danger Button',
+    variant: 'danger'
   }
 };

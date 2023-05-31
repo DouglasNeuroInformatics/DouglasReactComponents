@@ -11,7 +11,7 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "tailwind.utils.cjs"
+    "tailwind.config.cjs"
   ],
   "scripts": {
     "build": "tsup",
