@@ -96,9 +96,9 @@ const FormComponent = <T extends FormInstrumentData>({
             })
           : renderFormFields(content)}
         <div className="flex w-full gap-3">
-          <Button className="w-full" label={submitBtnLabel ?? t('form.submit')} type="submit" />
+          <Button className="w-full" label={submitBtnLabel ?? t('form.submit')} type="submit" variant="primary" />
           {resetBtn && (
-            <Button className="w-full" label={t('form.reset')} type="button" variant="light" onClick={reset} />
+            <Button className="w-full" label={t('form.reset')} type="button" variant="secondary" onClick={reset} />
           )}
         </div>
       </form>

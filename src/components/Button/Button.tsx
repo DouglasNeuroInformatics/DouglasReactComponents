@@ -12,7 +12,7 @@ export interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button
 }
 
 export const Button = React.forwardRef(function Button(
-  { disabled, className, icon, label, iconPosition = 'left', size = 'md', variant = 'dark', ...props }: ButtonProps,
+  { disabled, className, icon, label, iconPosition = 'left', size = 'md', variant = 'primary', ...props }: ButtonProps,
   ref?: ForwardedRef<HTMLButtonElement>
 ) {
   return (

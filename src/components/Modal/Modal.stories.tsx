@@ -26,8 +26,8 @@ export const Default: Story = {
         </div>
 
         <div className="mt-4 flex">
-          <Button className="mr-2" label="Accept" />
-          <Button label="Decline" variant="light" />
+          <Button className="mr-2" label="Accept" variant="primary" />
+          <Button label="Decline" variant="secondary" />
         </div>
       </>
     )
