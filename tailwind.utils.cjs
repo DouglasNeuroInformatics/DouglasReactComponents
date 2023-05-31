@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const colors = require('tailwindcss/colors');
 const plugin = require('tailwindcss/plugin');
 
 const distDir = path.resolve(module.path, 'dist');
@@ -70,7 +71,7 @@ function createConfig(options) {
       }
     },
     plugins: [
-      plugin(({ addComponents }) => {
+      plugin(({ addComponents, addUtilities }) => {
         addComponents({
           '.btn': {
             '@apply flex w-fit items-center justify-center rounded-md font-medium shadow-sm focus:outline-none disabled:cursor-not-allowed disabled:opacity-70':
@@ -104,6 +105,14 @@ function createConfig(options) {
           },
           '.field-label-floating--active': {
             '@apply -translate-y-5 text-sm text-indigo-800': {}
+          }
+        });
+        addUtilities({
+          '.bg-primary': {
+            '@apply bg-slate-100': {}
+          },
+          '.bg-primary-dark': {
+            '@apply bg-slate-900': {}
           }
         });
       }),
