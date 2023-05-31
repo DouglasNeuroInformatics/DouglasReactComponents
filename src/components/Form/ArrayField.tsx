@@ -27,7 +27,7 @@ export const ArrayField = ({ label, fieldset, error, value: arrayValue, setValue
     <div>
       {arrayValue.map((fields, i) => (
         <div key={i}>
-          <span className="field-header">{label + ' ' + (i + 1)}</span>
+          <span className="font-medium text-slate-600 dark:text-slate-300">{label + ' ' + (i + 1)}</span>
           {Object.keys(fields).map((fieldName) => {
             const field = fieldset[fieldName];
             const fieldProps = field instanceof Function ? field(fields) : field;

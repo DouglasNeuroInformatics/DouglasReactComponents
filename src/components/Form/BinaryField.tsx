@@ -18,8 +18,12 @@ const Checkbox = (props: InnerProps) => (
       {props.label}
     </label>
     <div className="field-input-base">
-      <Switch checked={Boolean(props.value)} className="w-fit border" onChange={props.setValue}>
-        <CheckIcon className="ui-checked:visible invisible w-4 h-4" />
+      <Switch
+        checked={Boolean(props.value)}
+        className="flex h-6 w-6 items-center justify-center bg-white ring-1 ring-slate-200 hover:bg-slate-50 hover:shadow-xl dark:bg-slate-800 dark:ring-slate-500 dark:hover:bg-slate-700"
+        onChange={props.setValue}
+      >
+        <CheckIcon className="invisible p-0.5 text-slate-600 ui-checked:visible dark:text-slate-300" />
       </Switch>
     </div>
   </>
@@ -29,8 +33,8 @@ const RadioOption = ({ value, label }: { value: true | false; label?: string }) 
   const { t } = useTranslation();
   return (
     <RadioGroup.Option className="flex items-center" value={value}>
-      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white ring-1 ring-slate-200 hover:bg-slate-50 hover:shadow-xl">
-        <CheckIcon className="ui-checked:opacity-100 duration-400 text-slate-600 opacity-0 transition-opacity ease-in-out" />
+      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white ring-1 ring-slate-200 hover:bg-slate-50 hover:shadow-xl dark:bg-slate-800 dark:ring-slate-500 dark:hover:bg-slate-700">
+        <CheckIcon className="duration-400 p-0.5 text-slate-600 opacity-0 transition-opacity ease-in-out ui-checked:opacity-100 dark:text-slate-300" />
       </div>
       <span className="ms-2">{label ?? t(`form.radio.labels.${value}`)}</span>
     </RadioGroup.Option>

@@ -12,7 +12,7 @@ export const SearchBar = withI18nProvider(function SearchBar({ className, placeh
   return (
     <input
       className={clsx('block w-full rounded-lg border border-gray-300 px-4 py-3 pl-2 text-sm', className)}
-      placeholder={placeholder ?? t('searchBar.placeholder')}
+      placeholder={placeholder ?? t('searchBar.placeholder')!}
       type="search"
       {...props}
     />

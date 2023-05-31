@@ -34,7 +34,8 @@ export const BasicForm: StoryObj<typeof Form<BasicFormValues>> = {
       textShort: {
         kind: 'text',
         label: 'Short Text',
-        variant: 'short'
+        variant: 'short',
+        description: 'Test'
       },
       textLong: {
         kind: 'text',
@@ -118,7 +119,7 @@ export const ArrayForm: StoryObj<typeof Form<ArrayFormValues>> = {
             label: 'Field 2',
             min: 0,
             max: 10,
-            variant: 'slider'
+            variant: 'slider',
           }
         }
       }

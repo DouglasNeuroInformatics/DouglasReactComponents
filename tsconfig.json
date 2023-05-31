@@ -4,7 +4,9 @@
     "jsx": "react",
     "lib": ["es2015", "dom"],
     "moduleResolution": "node",
-    "noEmit": true
+    "noEmit": true,
+    "strict": true,
+    "typeRoots": ["node_modules/@types", "typings"]
   },
   "include": ["src"]
 }

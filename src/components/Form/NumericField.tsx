@@ -34,7 +34,7 @@ export const NumericField = ({
       {variant === 'default' && (
         <>
           <input
-            className="field-input peer"
+            className="peer field-input"
             max={max}
             min={min}
             name={name}
@@ -67,7 +67,7 @@ export const NumericField = ({
               value={value ?? min}
               onChange={handleChange}
             />
-            <div className="flex items-center justify-center text-gray-600">{value ?? min}</div>
+            <div className="flex items-center justify-center text-slate-600 dark:text-slate-300">{value ?? min}</div>
             <FormFieldDescription description={description} />
           </div>
         </>
