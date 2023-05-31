@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import type { Preview } from '@storybook/react';
 
@@ -7,6 +7,11 @@ import './tailwind.css';
 const preview: Preview = {
   decorators: [
     (Story) => {
+      useEffect(() => {
+        const iFrameRoot = document.querySelector('.sb-show-main')?.parentNode as HTMLElement;
+        iFrameRoot.classList.add('light');
+      }, []);
+
       return (
         <>
           <div>
@@ -15,8 +20,11 @@ const preview: Preview = {
                 const iFrameRoot = document.querySelector('.sb-show-main')?.parentNode as HTMLElement;
                 if (!iFrameRoot) {
                   throw new Error('Failed to resolve root HTML element in iFrame');
+                } else if (iFrameRoot.classList.contains('dark')) {
+                  iFrameRoot.classList.replace('dark', 'light');
+                } else {
+                  iFrameRoot.classList.replace('light', 'dark');
                 }
-                iFrameRoot.classList.toggle('dark');
               }}
             >
               Dark
@@ -29,9 +37,6 @@ const preview: Preview = {
   ],
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
-    backgrounds: {
-      default: 'light'
-    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

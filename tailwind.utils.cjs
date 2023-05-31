@@ -71,7 +71,17 @@ function createConfig(options) {
       }
     },
     plugins: [
-      plugin(({ addComponents, addUtilities }) => {
+      plugin(({ addBase, addComponents, addUtilities, theme }) => {
+        addBase({
+          'html.dark': {
+            backgroundColor: theme('colors.slate.900'),
+            color: theme('colors.slate.100')
+          },
+          'html.light': {
+            backgroundColor: theme('colors.slate.100'),
+            color: theme('colors.slate.900')
+          }
+        });
         addComponents({
           '.btn': {
             '@apply flex w-fit items-center justify-center rounded-md font-medium shadow-sm focus:outline-none disabled:cursor-not-allowed disabled:opacity-70':
@@ -108,10 +118,10 @@ function createConfig(options) {
           }
         });
         addUtilities({
-          '.bg-primary': {
+          '.bg-light': {
             '@apply bg-slate-100': {}
           },
-          '.bg-primary-dark': {
+          '.bg-dark': {
             '@apply bg-slate-900': {}
           }
         });
