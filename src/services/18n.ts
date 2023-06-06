@@ -26,6 +26,10 @@ const resources = {
       'form.radio.labels.true': 'True',
       'form.reset': 'Clear',
       'form.submit': 'Submit',
+      'notifications.types.error': 'Error',
+      'notifications.types.info': 'Info',
+      'notifications.types.success': 'Success',
+      'notifications.types.warning': 'Warning',
       'searchBar.placeholder': 'Search...'
     }
   },
@@ -52,6 +56,10 @@ const resources = {
     'form.radio.labels.true': 'Vrai',
     'form.reset': 'Réinitialiser',
     'form.submit': 'Soumettre',
+    'notifications.types.error': 'Erreur',
+    'notifications.types.info': 'Attention',
+    'notifications.types.success': 'Succès',
+    'notifications.types.warning': 'Avertissement',
     'searchBar.placeholder': 'Rechercher...'
   }
 } as const;

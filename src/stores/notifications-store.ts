@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export interface Notification {
+export interface NotificationInterface {
   id: number;
   type: 'info' | 'warning' | 'success' | 'error';
   title?: string;
@@ -9,8 +9,8 @@ export interface Notification {
 }
 
 export interface NotificationsStore {
-  notifications: Notification[];
-  addNotification: (notification: Omit<Notification, 'id'>) => void;
+  notifications: NotificationInterface[];
+  addNotification: (notification: Omit<NotificationInterface, 'id'>) => void;
   dismissNotification: (id: number) => void;
 }
 
