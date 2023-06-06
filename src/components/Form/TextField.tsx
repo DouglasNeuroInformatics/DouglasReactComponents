@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { TextFormField } from '@douglasneuroinformatics/common';
@@ -18,7 +20,7 @@ export const TextField = ({ description, name, label, variant, error, value, set
       {variant === 'short' || variant === 'password' ? (
         <input
           autoComplete="off"
-          className="field-input peer"
+          className="peer field-input"
           name={name}
           type={variant === 'short' ? 'text' : 'password'}
           value={value ?? ''}
@@ -27,7 +29,7 @@ export const TextField = ({ description, name, label, variant, error, value, set
       ) : (
         <textarea
           autoComplete="off"
-          className="field-input peer"
+          className="peer field-input"
           rows={5}
           value={value ?? ''}
           onChange={handleChange}

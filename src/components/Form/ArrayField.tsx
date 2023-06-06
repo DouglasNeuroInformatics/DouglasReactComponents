@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { ArrayFormField } from '@douglasneuroinformatics/common';

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import { Listbox, Transition } from '@headlessui/react';
@@ -67,11 +69,11 @@ export const SelectDropdown = <T extends SelectOption>({
               value={option}
             >
               {checkPosition === 'left' && (
-                <CheckIcon className="ui-selected:visible invisible mr-2 h-6" height={16} width={16} />
+                <CheckIcon className="invisible mr-2 h-6 ui-selected:visible" height={16} width={16} />
               )}
               <span className="ui-selected:font-medium">{option.label}</span>
               {checkPosition === 'right' && (
-                <CheckIcon className="ui-selected:visible invisible ml-2" height={16} width={16} />
+                <CheckIcon className="invisible ml-2 ui-selected:visible" height={16} width={16} />
               )}
             </Listbox.Option>
           ))}

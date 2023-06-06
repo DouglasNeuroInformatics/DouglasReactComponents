@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useReducer } from 'react';
 
 import { StepperContext } from '../../context/StepperContext';

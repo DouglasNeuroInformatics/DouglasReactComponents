@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useMemo, useState } from 'react';
 
 import { ChevronUpIcon } from '@heroicons/react/24/solid';

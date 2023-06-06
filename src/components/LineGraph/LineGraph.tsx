@@ -1,3 +1,7 @@
+'use client'; 
+
+// Once the migration is over, should try to render on the server if possible as this is huge
+
 import React from 'react';
 
 import { ConditionalKeys, toBasicISOString } from '@douglasneuroinformatics/utils';

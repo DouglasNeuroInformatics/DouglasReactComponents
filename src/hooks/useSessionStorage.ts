@@ -1,3 +1,5 @@
+'use client';
+
 import { Dispatch, SetStateAction, useCallback, useEffect, useState } from 'react';
 
 import { useEventCallback } from './useEventCallback';

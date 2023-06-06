@@ -1,12 +1,23 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
+    "baseUrl": "src",
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["es2015", "dom"],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
     "moduleResolution": "node",
-    "noEmit": true,
+    "outDir": "dist",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "strict": true,
+    "target": "ESNext",
     "typeRoots": ["node_modules/@types", "typings"]
   },
-  "include": ["src"]
+  "include": ["src/**/*", "i18next.d.ts"],
+  "exclude": ["**/*.stories.*", "**/*.test.*"]
 }
