@@ -40,7 +40,8 @@
     "i18next-http-backend": "^2.2.1",
     "prop-types": "^15.8.1",
     "react-i18next": "^12.3.1",
-    "recharts": "^2.6.2"
+    "recharts": "^2.6.2",
+    "zustand": "^4.3.8"
   },
   "devDependencies": {
     "@douglasneuroinformatics/eslint-config": "latest",
