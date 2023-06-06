@@ -34,7 +34,7 @@ const NotificationHubComponent = ({ timeout = 5000 }: NotificationHubProps) => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ type: 'spring', bounce: 0.1 }}
           >
-            <div className="w-full py-2">
+            <div className="w-full p-2">
               <div className="w-full rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
                 <div className="p-4">
                   <div className="mb-2 flex items-center">
