@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useMemo } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -17,10 +19,6 @@ interface NotificationHubProps {
 const NotificationHubComponent = ({ timeout = 5000 }: NotificationHubProps) => {
   const { t } = useTranslation();
   const { notifications, dismissNotification } = useNotificationsStore();
-
-  const duration = timeout / 1000;
-
-  console.log(duration);
 
   return (
     <div className="fixed bottom-0 z-50 w-full print:hidden">
