@@ -13,7 +13,7 @@ export const SearchBar = withI18nProvider(function SearchBar({ className, placeh
   const { t } = useTranslation();
   return (
     <input
-      className={clsx('block w-full rounded-lg border border-slate-300 text-sm', className)}
+      className={clsx('block w-full rounded-lg border border-slate-300 text-sm p-3', className)}
       placeholder={placeholder ?? t('searchBar.placeholder')!}
       type="search"
       {...props}
