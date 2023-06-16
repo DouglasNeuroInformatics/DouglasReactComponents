@@ -92,7 +92,7 @@ module.exports = {
             {}
         },
         '.field-label': {
-          '@apply pointer-events-none text-slate-600 dark:text-slate-300': {}
+          '@apply first-letter:capitalize pointer-events-none text-slate-600 dark:text-slate-300': {}
         },
         '.field-label-floating': {
           '@apply field-label absolute left-0 transition-all': {}
