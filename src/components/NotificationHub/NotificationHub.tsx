@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { AnimatePresence, motion } from 'framer-motion';
