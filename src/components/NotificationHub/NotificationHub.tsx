@@ -2,14 +2,16 @@
 
 import React, { useMemo } from 'react';
 
-import { useTranslation } from 'react-i18next';
 import { XMarkIcon } from '@heroicons/react/24/solid';
-
-import { NotificationIcon } from './NotificationIcon';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 import { useNotificationsStore } from '../../stores/notifications-store';
 import { withI18nProvider } from '../../utils/with-i18n-provider';
-import { AnimatePresence, motion } from 'framer-motion';
+
+import { NotificationIcon } from './NotificationIcon';
+
+
 
 interface NotificationHubProps {
   /** The number of milliseconds before the notification is automatically cleared */
@@ -25,11 +27,11 @@ const NotificationHubComponent = ({ timeout = 5000 }: NotificationHubProps) => {
       <AnimatePresence>
         {notifications.map((item) => (
           <motion.div
-            key={item.id}
-            className="relative max-w-sm"
-            initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
+            className="relative max-w-sm"
             exit={{ opacity: 0, height: 0 }}
+            initial={{ opacity: 0, height: 0 }}
+            key={item.id}
             transition={{ type: 'spring', bounce: 0.1 }}
           >
             <div className="w-full p-2">
