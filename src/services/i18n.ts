@@ -49,18 +49,18 @@ const resources = {
         'Octobre',
         'Novembre',
         'Décembre'
-      ]
-    },
-    'form.errors.required': 'Ce champ est obligatoire',
-    'form.radio.labels.false': 'Faux',
-    'form.radio.labels.true': 'Vrai',
-    'form.reset': 'Réinitialiser',
-    'form.submit': 'Soumettre',
-    'notifications.types.error': 'Erreur',
-    'notifications.types.info': 'Attention',
-    'notifications.types.success': 'Succès',
-    'notifications.types.warning': 'Avertissement',
-    'searchBar.placeholder': 'Rechercher...'
+      ],
+      'form.errors.required': 'Ce champ est obligatoire',
+      'form.radio.labels.false': 'Faux',
+      'form.radio.labels.true': 'Vrai',
+      'form.reset': 'Réinitialiser',
+      'form.submit': 'Soumettre',
+      'notifications.types.error': 'Erreur',
+      'notifications.types.info': 'Attention',
+      'notifications.types.success': 'Succès',
+      'notifications.types.warning': 'Avertissement',
+      'searchBar.placeholder': 'Rechercher...'
+    }
   }
 } as const;
 
