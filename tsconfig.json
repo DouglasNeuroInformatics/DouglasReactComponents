@@ -18,6 +18,5 @@
     "target": "ESNext",
     "typeRoots": ["node_modules/@types", "typings"]
   },
-  "include": ["src/**/*", "i18next.d.ts"],
-  "exclude": ["**/*.stories.*", "**/*.test.*"]
+  "include": ["src/**/*", "i18next.d.ts"]
 }

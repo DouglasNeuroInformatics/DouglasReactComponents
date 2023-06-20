@@ -10,3 +10,4 @@ export * from './NotificationHub';
 export * from './SearchBar';
 export * from './SelectDropdown';
 export * from './Stepper';
+export * from './Table';

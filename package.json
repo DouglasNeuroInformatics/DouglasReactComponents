@@ -14,7 +14,7 @@
     "tailwind.config.cjs"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -p tsconfig.build.json",
     "build-storybook": "storybook build -o docs",
     "lint": "eslint --fix src",
     "storybook": "storybook dev -p 6006",
