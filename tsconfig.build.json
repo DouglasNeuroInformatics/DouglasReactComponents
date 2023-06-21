@@ -1,4 +1,7 @@
 {
   "extends": "./tsconfig.json",
-  "exclude": ["**/*.stories.*", "**/*.test.*"]
+  "exclude": ["**/*.stories.*", "**/*.test.*"],
+  "compilerOptions": {
+    "sourceMap": true
+  }
 }
