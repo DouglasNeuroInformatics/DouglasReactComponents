@@ -33,7 +33,7 @@ module.exports = {
     }
   },
   plugins: [
-    plugin(({ addBase, addComponents, addUtilities, theme }) => {
+    plugin(({ addBase, addComponents, theme }) => {
       addBase({
         'html.dark': {
           backgroundColor: theme('colors.slate.900'),
@@ -45,43 +45,6 @@ module.exports = {
         }
       });
       addComponents({
-        '.btn': {
-          alignItems: 'center',
-          borderRadius: theme('borderRadius.md'),
-          boxShadow: theme('boxShadow.md'),
-          display: 'flex',
-          fontWeight: theme('fontWeight.md'),
-          justifyContent: 'center',
-          '&:disabled': {
-            cursor: 'not-allowed',
-            opacity: '0.7'
-          },
-          '&:focus': {
-            outline: '0'
-          }
-        },
-        '.btn-primary': {
-          backgroundColor: theme('colors.slate.900'),
-          color: theme('colors.slate.100'),
-          '&:hover': {
-            backgroundColor: theme('colors.slate.800')
-          },
-          '&:dark': {
-            backgroundColor: theme('colors.slate.100'),
-            color: theme('colors.slate.900')
-          }
-        },
-        '.btn-secondary': {
-          backgroundColor: 'inherit',
-          borderWidth: '1px'
-        },
-        '.btn-danger': {
-          backgroundColor: theme('colors.red.500'),
-          color: 'white',
-          '&:hover': {
-            backgroundColor: theme('colors.red.600')
-          }
-        },
         '.field-input-base': {
           '@apply w-full bg-transparent py-2 text-left hover:border-slate-300 dark:hover:border-slate-400 focus:border-sky-800 dark:focus:border-sky-500 focus:outline-none':
             {},
