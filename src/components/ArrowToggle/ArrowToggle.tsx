@@ -3,7 +3,7 @@
 import React, { useMemo, useState } from 'react';
 
 import { ChevronUpIcon } from '@heroicons/react/24/solid';
-import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export interface ArrowToggleProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'content'> {
   /** The starting position of the arrow (i.e., which direction does it point to) */
@@ -50,7 +50,7 @@ export const ArrowToggle = React.forwardRef<HTMLButtonElement, ArrowToggleProps>
 
   return (
     <button
-      className={clsx('flex items-center justify-center', className)}
+      className={twMerge('flex items-center justify-center', className)}
       ref={ref}
       type="button"
       onClick={handleClick}

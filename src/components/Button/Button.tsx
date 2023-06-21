@@ -2,7 +2,7 @@
 
 import React, { ForwardedRef } from 'react';
 
-import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export interface ButtonProps extends Omit<React.ComponentPropsWithoutRef<'button'>, 'children'> {
   disabled?: boolean;
@@ -19,17 +19,14 @@ export const Button = React.forwardRef(function Button(
 ) {
   return (
     <button
-      className={clsx(
+      className={twMerge(
         'flex items-center justify-center rounded-md font-medium shadow-md focus:outline-none disabled:cursor-not-allowed disabled:opacity-70',
-        {
-          'px-4 py-2 text-sm': size === 'sm',
-          'text-md px-6 py-2': size === 'md',
-          'px-8 py-3 text-lg': size === 'lg',
-          'bg-slate-800 text-slate-100 hover:bg-slate-700 dark:bg-sky-700 dark:hover:bg-sky-600':
-            variant === 'primary',
-          'border bg-inherit': variant === 'secondary',
-          'bg-red-600 text-white hover:bg-opacity-90': variant === 'danger'
-        },
+        size === 'sm' && 'px-4 py-2 text-sm',
+        size === 'md' && 'text-md px-6 py-2',
+        size === 'lg' && 'px-8 py-3 text-lg',
+        variant === 'primary' && 'bg-slate-800 text-slate-100 hover:bg-slate-700 dark:bg-sky-700 dark:hover:bg-sky-600',
+        variant === 'secondary' && 'border bg-inherit',
+        variant === 'danger' && 'bg-red-600 text-white hover:bg-opacity-90',
         className
       )}
       disabled={disabled}
