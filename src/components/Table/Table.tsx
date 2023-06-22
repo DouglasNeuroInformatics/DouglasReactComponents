@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 
 import { toBasicISOString } from '@douglasneuroinformatics/utils';
-import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid';
-import { clsx } from 'clsx';
 
-function formatValue(value: unknown): string {
+/** Coerces the value in a cell to a string for consistant display purposes */
+function defaultFormatter(value: unknown): string {
   if (typeof value === 'string') {
     return value;
   } else if (typeof value === 'number') {
@@ -12,92 +11,79 @@ function formatValue(value: unknown): string {
   } else if (typeof value === 'undefined') {
     return 'NA';
   }
-
   if (value instanceof Date) {
     return toBasicISOString(value);
   }
-
   return JSON.stringify(value);
 }
 
-export interface TableColumn<T> {
-  name: string;
-  field: keyof T | ((entry: T) => unknown);
+export type TableEntry = Record<string, unknown>;
+
+export type FieldFactory = (entry: TableEntry) => string;
+
+export interface TableColumn<T extends TableEntry> {
+  /** The label to be displayed on the header */
+  label: string;
+
+  /** How to determine the values for column */
+  field: keyof T | FieldFactory;
+
   /** Override the default formatter for this field */
-  format?: (value: any) => string;
+  formatter?: (value: any) => string;
 }
 
-export interface TableProps<T> {
+export interface TableProps<T extends TableEntry> {
   columns: TableColumn<T>[];
   data: T[];
   onEntryClick?: (entry: T) => void;
 }
 
-export const Table = <T extends Record<PropertyKey, unknown>>({ columns, data, onEntryClick }: TableProps<T>) => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const [entriesPerPage, setEntriesPerPage] = useState(10);
+export const Table = <T extends TableEntry>({ columns, data, onEntryClick }: TableProps<T>) => {
+  // const [ref, { width, height }] = useElementSize();
+  const ref = useRef<HTMLDivElement>(null);
+  const [columnWidth, setColumnWidth] = useState<number>();
+  const [rowHeight] = useState(100);
 
-  const indexOfLastEntry = currentPage * entriesPerPage;
-  const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
-
-  const currentEntries = data.slice(indexOfFirstEntry, indexOfLastEntry);
-  const pageCount = Math.ceil(data.length / entriesPerPage);
-  const pageNumbers = [...Array(pageCount).keys()].map((i) => i + 1);
+  useLayoutEffect(() => {
+    if (ref.current) {
+      setColumnWidth(ref.current?.offsetWidth / 4);
+    }
+  }, []);
 
   return (
-    <div>
-      <div className="scrollbar-hidden overflow-x-scroll">
-        <table className="relative w-full table-auto border">
-          <thead>
-            <tr>
-              {columns.map((column, i) => (
-                <th className="whitespace-nowrap px-6 py-3 text-left" key={i}>
-                  {column.name}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {currentEntries.map((entry, i) => (
-              <tr
-                className={clsx('odd:bg-slate-100 hover:bg-zinc-200', {
-                  'cursor-pointer': onEntryClick
-                })}
-                key={i}
-                onClick={() => onEntryClick && onEntryClick(entry)}
-              >
-                {columns.map(({ field, format }, j) => {
-                  const value = typeof field === 'function' ? field(entry) : entry[field];
-                  return (
-                    <td className="whitespace-nowrap px-6 py-3" key={j}>
-                      <span>{format ? format(value) : formatValue(value)}</span>
-                    </td>
-                  );
-                })}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <div className="mb-2 mt-6 flex justify-center">
-        <button className="flex h-8 w-8 items-center justify-center rounded-full border">
-          <ArrowLeftIcon />
-        </button>
-        {pageNumbers.map((page) => (
-          <button
-            className={clsx('mx-1 flex h-8 w-8 items-center justify-center rounded-full border', {
-              'bg-slate-600 text-slate-100': currentPage === page,
-              'hover:bg-slate-200': currentPage !== page
-            })}
-            key={page}
-            onClick={() => setCurrentPage(page)}
+    <div
+      className="h-full w-full border-separate overflow-scroll rounded-sm shadow-sm ring-1 ring-black ring-opacity-5"
+      ref={ref}
+    >
+      <div className="sticky top-0 flex w-fit border-b border-slate-300 dark:border-0 bg-slate-50 dark:bg-slate-800">
+        {columns.map((column) => (
+          <div
+            className="flex-shrink-0 p-4 text-sm font-semibold text-slate-900 dark:text-slate-100"
+            key={column.label}
+            style={{ width: columnWidth }}
           >
-            {page}
-          </button>
+            {column.label}
+          </div>
         ))}
-        <button className="flex h-8 w-8 items-center justify-center rounded-full border">
-          <ArrowRightIcon />
-        </button>
+      </div>
+      <div className="w-fit min-w-full divide-y divide-solid divide-slate-200 bg-white dark:divide-slate-600 dark:bg-slate-700">
+        {data.map((entry, i) => (
+          <div className="flex" key={i} onClick={() => onEntryClick && onEntryClick(entry)}>
+            {columns.map(({ field, formatter }, i) => {
+              const value = typeof field === 'function' ? field(entry) : entry[field];
+              const formattedValue = formatter ? formatter(value) : defaultFormatter(value);
+              return (
+                <div
+                  className="flex-shrink-0 whitespace-nowrap p-4 text-sm text-slate-600 dark:text-slate-300"
+                  key={i}
+                  style={{ width: columnWidth }}
+                >
+                  {formattedValue}
+                </div>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </div>
   );
