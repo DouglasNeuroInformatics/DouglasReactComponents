@@ -1,37 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import type { Preview } from '@storybook/react';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 import './tailwind.css';
 
 const preview: Preview = {
   decorators: [
     (Story) => {
+      const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+      const handleToggle = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+
       useEffect(() => {
         const iFrameRoot = document.querySelector('.sb-show-main')?.parentNode as HTMLElement;
-        iFrameRoot.classList.add('light');
-      }, []);
+        if (theme === 'dark') {
+          iFrameRoot.classList.add('dark');
+        } else {
+          iFrameRoot.classList.remove('dark');
+        }
+      }, [theme]);
 
       return (
-        <>
-          <div>
+        <div className="h-screen w-screen">
+          <div className="absolute right-0 top-0 z-50 w-fit p-2">
             <button
-              onClick={() => {
-                const iFrameRoot = document.querySelector('.sb-show-main')?.parentNode as HTMLElement;
-                if (!iFrameRoot) {
-                  throw new Error('Failed to resolve root HTML element in iFrame');
-                } else if (iFrameRoot.classList.contains('dark')) {
-                  iFrameRoot.classList.replace('dark', 'light');
-                } else {
-                  iFrameRoot.classList.replace('light', 'dark');
-                }
-              }}
+              className="w-full rounded-full bg-slate-600 p-2 text-white transition-transform hover:bg-slate-500"
+              onClick={handleToggle}
             >
-              Dark
+              {theme === 'dark' ? <SunIcon height={24} width={24} /> : <MoonIcon height={24} width={24} />}
             </button>
           </div>
           <Story />
-        </>
+        </div>
       );
     }
   ],
