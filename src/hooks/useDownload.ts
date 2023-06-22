@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 
 import { useNotificationsStore } from '..';
 
+/**
+ * Used to trigger downloads of arbitrary data to the client
+ * @returns A function to invoke the download
+ */
 export function useDownload() {
   const notifications = useNotificationsStore();
   const [data, setData] = useState<string | null>(null);
