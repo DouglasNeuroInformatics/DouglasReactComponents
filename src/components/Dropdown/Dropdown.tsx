@@ -4,7 +4,7 @@ import React from 'react';
 
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
-import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 import { Button, type ButtonProps } from '../Button';
 
@@ -42,7 +42,7 @@ export function Dropdown<const T extends DropdownOptions>({
 }: DropdownProps<T>) {
   const optionKeys: readonly string[] = options instanceof Array ? options : Object.keys(options);
   return (
-    <Menu as="div" className={clsx('relative w-full whitespace-nowrap', className)}>
+    <Menu as="div" className={twMerge('relative w-full whitespace-nowrap', className)}>
       <Menu.Button
         as={Button}
         className="h-full w-full"
