@@ -45,7 +45,7 @@ const NotificationHubComponent = ({ timeout = 5000 }: NotificationHubProps) => {
                     <button
                       className="inline-flex rounded-md bg-white text-slate-400 hover:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                       type="button"
-                      onClick={(event: React.MouseEvent) => dismissNotification(item.id)}
+                      onClick={() => dismissNotification(item.id)}
                     >
                       <span className="sr-only">Close</span>
                       <XMarkIcon aria-hidden="true" className="h-5 w-5" />

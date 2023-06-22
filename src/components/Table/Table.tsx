@@ -42,7 +42,6 @@ export const Table = <T extends TableEntry>({ columns, data, onEntryClick }: Tab
   // const [ref, { width, height }] = useElementSize();
   const ref = useRef<HTMLDivElement>(null);
   const [columnWidth, setColumnWidth] = useState<number>();
-  const [rowHeight] = useState(100);
 
   useLayoutEffect(() => {
     if (ref.current) {

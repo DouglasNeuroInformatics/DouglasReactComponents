@@ -16,9 +16,8 @@ type SetValue<T> = Dispatch<SetStateAction<T>>;
 // A wrapper for "JSON.parse()"" to support "undefined" value
 function parseJSON<T>(value: string | null): T | undefined {
   try {
-    return value === 'undefined' ? undefined : JSON.parse(value ?? '');
+    return value === 'undefined' ? undefined : (JSON.parse(value ?? '') as T);
   } catch {
-    console.log('parsing error on', { value });
     return undefined;
   }
 }
@@ -72,7 +71,6 @@ export function useSessionStorage<T>(key: string, initialValue: T): [T, SetValue
 
   useEffect(() => {
     setStoredValue(readValue());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleStorageChange = useCallback(
