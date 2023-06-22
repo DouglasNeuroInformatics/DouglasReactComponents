@@ -17,7 +17,6 @@ export type CalendarProps = {
 export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(function Calendar(props, ref) {
   const { t } = useTranslation();
 
-  const dayNames = t('datetime.days').map((day) => day.charAt(0).toUpperCase());
   const firstDay = new Date(props.year, props.month).getDay();
   const lastDay = new Date(props.year, props.month + 1, 0).getDate();
   const days = range(1, lastDay + 1);
@@ -32,9 +31,9 @@ export const Calendar = React.forwardRef<HTMLDivElement, CalendarProps>(function
         transition={{ duration: CALENDAR_ANIMATION_DURATION }}
       >
         <div className="grid w-72 grid-cols-7 gap-3" ref={ref}>
-          {dayNames.map((name, i) => (
+          {range(7).map((i) => (
             <div className="flex items-center justify-center" key={i}>
-              {name}
+              {(t(`datetime.days.${i as 0}`) as string).charAt(0).toUpperCase()}
             </div>
           ))}
           <div style={{ gridColumn: `span ${firstDay} / span ${firstDay}` }} />

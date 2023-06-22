@@ -57,7 +57,7 @@ export const DatePicker = withI18nProvider(function DatePicker({ onSelection, ..
   // the duration is doubled because presumably it is to mount old and mount new
   const [canSetMonth, setCanSetMonth] = useState(true);
 
-  const monthName = t('datetime.months')[date.getMonth()];
+  const monthName: string = t(`datetime.months.${date.getMonth() as 0}`);
 
   const handleYearSelection = (date: Date) => {
     dispatch({ type: 'set-year', value: date.getFullYear() });
