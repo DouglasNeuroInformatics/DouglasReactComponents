@@ -26,6 +26,8 @@ export interface DropdownProps<T extends DropdownOptions> {
   /** Callback function invoked when user clicks an option */
   onSelection: (option: DropdownOptionKey<T>) => void;
 
+  size?: ButtonProps['size'];
+
   /** The button variant to use for the dropdown toggle */
   variant?: ButtonProps['variant'];
 
@@ -37,6 +39,7 @@ export function Dropdown<const T extends DropdownOptions>({
   title,
   options,
   onSelection,
+  size,
   variant,
   className
 }: DropdownProps<T>) {
@@ -50,6 +53,7 @@ export function Dropdown<const T extends DropdownOptions>({
         icon={<ChevronDownIcon />}
         iconPosition="right"
         label={title}
+        size={size}
         style={{ width: '100%' }}
         variant={variant}
       />
