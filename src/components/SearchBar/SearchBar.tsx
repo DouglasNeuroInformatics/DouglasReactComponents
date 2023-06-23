@@ -21,7 +21,7 @@ export const SearchBar = withI18nProvider(function SearchBar({
   return (
     <input
       className={twMerge(
-        'dark:highlight-white/5 w-full items-center rounded-lg text-left text-sm text-slate-600 shadow-md ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:bg-slate-800 dark:text-slate-300 dark:ring-0 dark:hover:bg-slate-700',
+        'dark:highlight-white/5 w-full items-center rounded-lg border border-slate-200 text-left text-sm text-slate-600 shadow-md ring-1 ring-black ring-opacity-5 focus:outline-none focus:ring-2 focus:ring-sky-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-300 dark:ring-0 dark:hover:bg-slate-700',
         size === 'xs' && 'p-1.5',
         size === 'sm' && 'p-2',
         size === 'md' && 'p-3',
