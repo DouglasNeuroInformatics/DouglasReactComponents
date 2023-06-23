@@ -1,16 +1,15 @@
 {
   "name": "@douglasneuroinformatics/react-components",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "description": "React components for DNP projects",
   "type": "module",
   "repository": "https://github.com/DouglasNeuroInformatics/DouglasReactComponents.git",
   "author": "joshunrau <contact@joshuaunrau.com>",
   "license": "LGPL-3.0",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
   "files": [
-    "dist",
+    "src",
     "tailwind.config.cjs"
   ],
   "scripts": {
