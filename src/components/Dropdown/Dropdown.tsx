@@ -16,6 +16,12 @@ type DropdownOptionKey<T> = T extends readonly string[]
   ? Extract<keyof T, string>
   : never;
 
+const ICON_SIZE = {
+  sm: 14,
+  md: 16,
+  lg: 18
+};
+
 export interface DropdownProps<T extends DropdownOptions> {
   /** The text content for the dropdown toggle */
   title: string;
@@ -50,7 +56,7 @@ export function Dropdown<const T extends DropdownOptions>({
         as={Button}
         className="h-full w-full"
         disabled={options.length === 0}
-        icon={<ChevronDownIcon />}
+        icon={<ChevronDownIcon height={ICON_SIZE[size ?? 'md']} width={ICON_SIZE[size ?? 'md']} />}
         iconPosition="right"
         label={title}
         size={size}
