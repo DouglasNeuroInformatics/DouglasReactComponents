@@ -63,11 +63,11 @@ export function Dropdown<const T extends DropdownOptions>({
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute z-10 mt-2 flex w-fit min-w-full flex-col border">
+        <Menu.Items className="absolute z-10 mt-2 flex w-fit min-w-full flex-col bg-slate-50 shadow-sm ring-1 ring-black ring-opacity-5 dark:bg-slate-800">
           {optionKeys.map((option) => (
             <Menu.Item key={option}>
               <button
-                className="bg-slate-50 p-2 text-left hover:bg-slate-200"
+                className="p-2 text-left hover:bg-slate-200 dark:hover:bg-slate-700"
                 style={{ minWidth: 100 }}
                 onClick={() => onSelection(option as DropdownOptionKey<T>)}
               >
