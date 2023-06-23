@@ -6,4 +6,8 @@ type Story = StoryObj<typeof SearchBar>;
 
 export default { component: SearchBar } as Meta<typeof SearchBar>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    size: 'sm'
+  }
+};
