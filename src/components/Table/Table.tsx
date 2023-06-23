@@ -51,13 +51,13 @@ export const Table = <T extends TableEntry>({ columns, data, onEntryClick }: Tab
 
   return (
     <div
-      className="h-full w-full border-separate overflow-scroll rounded-sm shadow-sm ring-1 ring-black ring-opacity-5"
+      className="h-full w-full border-separate overflow-scroll rounded-md shadow-md ring-1 ring-black ring-opacity-5"
       ref={ref}
     >
-      <div className="sticky top-0 flex w-fit border-b border-slate-300 dark:border-0 bg-slate-50 dark:bg-slate-800">
+      <div className="sticky top-0 flex w-fit border-b border-slate-300 dark:border-0 bg-slate-50 dark:bg-slate-700">
         {columns.map((column) => (
           <div
-            className="flex-shrink-0 p-4 text-sm font-semibold text-slate-900 dark:text-slate-100"
+            className="flex-shrink-0 p-4 text-sm font-semibold text-slate-800 dark:text-slate-200"
             key={column.label}
             style={{ width: columnWidth }}
           >
@@ -65,7 +65,7 @@ export const Table = <T extends TableEntry>({ columns, data, onEntryClick }: Tab
           </div>
         ))}
       </div>
-      <div className="w-fit min-w-full divide-y divide-solid divide-slate-200 bg-white dark:divide-slate-600 dark:bg-slate-700">
+      <div className="w-fit min-w-full divide-y divide-solid divide-slate-200 bg-white dark:divide-slate-600 dark:bg-slate-800">
         {data.map((entry, i) => (
           <div className="flex" key={i} onClick={() => onEntryClick && onEntryClick(entry)}>
             {columns.map(({ field, formatter }, i) => {
