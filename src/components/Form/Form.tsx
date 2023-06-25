@@ -23,7 +23,11 @@ interface FormProps<T extends FormInstrumentData> {
   initialValues?: FormValues<T> | null;
   resetBtn?: boolean;
   submitBtnLabel?: string;
-  validationSchema: JSONSchemaType<T>;
+  validationSchema: JSONSchemaType<T> & {
+    errorMessage?: {
+      [key: string]: any;
+    };
+  };
   onSubmit: (data: T) => void;
 }
 
@@ -54,6 +58,7 @@ const FormComponent = <T extends FormInstrumentData>({
       reset();
       onSubmit(values as T);
     } else {
+      console.error(validate.errors);
       setErrors(getFormErrors(validate.errors));
     }
   };
