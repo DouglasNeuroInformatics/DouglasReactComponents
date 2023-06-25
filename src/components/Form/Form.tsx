@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import {
   ArrayFieldValue,
@@ -55,12 +55,12 @@ const FormComponent = <T extends FormInstrumentData>({
   onSubmit,
   resetBtn
 }: FormProps<T>) => {
-  const [errors, setErrors] = useState<FormErrors<T>>({});
+  const [validationErrors, setValidationErrors] = useState<ErrorObject[] | null>(null);
   const [values, setValues] = useState<FormValues<T>>(() => initialValues ?? getDefaultValues(content));
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const getFormErrors = useCallback((validationErrors?: ErrorObject[] | null) => {
+  const errors: FormErrors<T> = useMemo(() => {
     const formErrors: FormErrors<T> = {};
     if (!validationErrors) {
       return formErrors;
@@ -98,11 +98,11 @@ const FormComponent = <T extends FormInstrumentData>({
       arrayErrors[index][item] = getErrorMessage(error, path);
     }
     return formErrors;
-  }, []);
+  }, [validationErrors, i18n.resolvedLanguage]);
 
   const reset = () => {
     setValues(getDefaultValues(content));
-    setErrors({});
+    setValidationErrors(null);
   };
 
   const validate = useMemo(() => ajv.compile(validationSchema), [validationSchema]);
@@ -115,7 +115,7 @@ const FormComponent = <T extends FormInstrumentData>({
       onSubmit(values as T);
     } else {
       console.error(validate.errors);
-      setErrors(getFormErrors(validate.errors));
+      setValidationErrors(validate.errors ?? null)
     }
   };
 
@@ -141,7 +141,7 @@ const FormComponent = <T extends FormInstrumentData>({
   };
 
   return (
-    <FormProvider {...{ errors, setErrors, values, setValues }}>
+    <FormProvider {...{ errors, values, setValues }}>
       <form autoComplete="off" className={clsx('w-full', className)} onSubmit={handleSubmit}>
         {Array.isArray(content)
           ? content.map((fieldGroup, i) => {

@@ -8,7 +8,6 @@ import type { FormErrors, FormValues } from '../components';
 
 export interface FormState<T extends FormInstrumentData = FormInstrumentData> {
   errors: FormErrors<T>;
-  setErrors: React.Dispatch<React.SetStateAction<FormErrors<T>>>;
   values: FormValues<T>;
   setValues: React.Dispatch<React.SetStateAction<FormValues<T>>>;
 }
