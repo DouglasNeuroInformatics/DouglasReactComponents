@@ -22,6 +22,7 @@ const resources = {
         'December'
       ],
       'form.errors.required': 'This field is required',
+      'form.errors.unknown': 'Unknown error',
       'form.radio.labels.false': 'False',
       'form.radio.labels.true': 'True',
       'form.reset': 'Clear',
@@ -53,6 +54,7 @@ const resources = {
         'Décembre'
       ],
       'form.errors.required': 'Ce champ est obligatoire',
+      'form.errors.unknown': 'Erreur inconnue',
       'form.radio.labels.false': 'Faux',
       'form.radio.labels.true': 'Vrai',
       'form.reset': 'Réinitialiser',
