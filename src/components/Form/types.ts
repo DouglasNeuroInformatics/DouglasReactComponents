@@ -20,7 +20,11 @@ export interface BaseFieldProps<T> {
 
 /** An object mapping field names to error messages, if applicable */
 export type FormErrors<T extends FormInstrumentData = FormInstrumentData> = {
-  [K in keyof T]?: string | Record<string, string>[];
+  [K in keyof T]?: T[K] extends PrimitiveFieldValue
+    ? string
+    : T[K] extends ArrayFieldValue
+    ? Record<keyof ArrayFieldValue[number], string>[]
+    : never;
 };
 
 export type FormValues<T extends FormInstrumentData = FormInstrumentData> = {

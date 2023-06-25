@@ -1,9 +1,15 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
-import { FormFields, FormInstrumentContent, FormInstrumentData } from '@douglasneuroinformatics/common';
-import { JSONSchemaType } from 'ajv';
+import {
+  ArrayFieldValue,
+  FormFields,
+  FormInstrumentContent,
+  FormInstrumentData,
+  PrimitiveFieldValue
+} from '@douglasneuroinformatics/common';
+import { ErrorObject, JSONSchemaType } from 'ajv';
 import { clsx } from 'clsx';
 import { useTranslation } from 'react-i18next';
 
@@ -15,7 +21,7 @@ import { Button } from '../Button';
 import { ArrayField, ArrayFieldProps } from './ArrayField';
 import { PrimitiveFormField, PrimitiveFormFieldProps } from './PrimitiveFormField';
 import { FormErrors, FormValues, NullableArrayFieldValue, NullablePrimitiveFieldValue } from './types';
-import { getDefaultValues, getFormErrors } from './utils';
+import { getDefaultValues } from './utils';
 
 interface FormProps<T extends FormInstrumentData> {
   content: FormInstrumentContent<T>;
@@ -23,11 +29,16 @@ interface FormProps<T extends FormInstrumentData> {
   initialValues?: FormValues<T> | null;
   resetBtn?: boolean;
   submitBtnLabel?: string;
-  validationSchema: JSONSchemaType<T> & {
-    errorMessage?: {
-      [key: string]: any;
-    };
+  errorMessages?: {
+    [K in keyof T]?: T[K] extends PrimitiveFieldValue
+      ? string
+      : T[K] extends ArrayFieldValue
+      ? {
+          [P in keyof T[K][number]]?: string;
+        }
+      : never;
   };
+  validationSchema: JSONSchemaType<T>;
   onSubmit: (data: T) => void;
 }
 
@@ -35,6 +46,7 @@ const FormComponent = <T extends FormInstrumentData>({
   content,
   className,
   initialValues,
+  errorMessages,
   submitBtnLabel,
   validationSchema,
   onSubmit,
@@ -45,10 +57,49 @@ const FormComponent = <T extends FormInstrumentData>({
 
   const { t } = useTranslation();
 
+  const getFormErrors = useCallback((validationErrors?: ErrorObject[] | null) => {
+    const formErrors: FormErrors<T> = {};
+    if (!validationErrors) {
+      return formErrors;
+    }
+
+    const getErrorMessage = (error: ErrorObject, path: string[]): string => {
+      const defaultMessage = `${error.message ?? t('form.errors.unknown')}`;
+      const [k1, k2]: [string?, string?] = [path[0], path[2]];
+      if (typeof errorMessages?.[k1] === 'string') {
+        return errorMessages[k1] as string;
+      } else if (errorMessages?.[k1] instanceof Object) {
+        return (errorMessages[k1] as Record<string, string | undefined>)[k2] ?? defaultMessage;
+      }
+      return defaultMessage;
+    };
+
+    for (const error of validationErrors) {
+      const path = error.instancePath.split('/').filter((e) => e);
+      const baseField = path[0] as Extract<keyof T, string>;
+      const isPrimitiveField = path.length === 1;
+      if (isPrimitiveField) {
+        (formErrors[baseField] as string) = getErrorMessage(error, path);
+        continue;
+      }
+      if (!Array.isArray(formErrors[baseField])) {
+        (formErrors[baseField] as Record<string, string>[]) = [];
+      }
+      const arrayErrors = formErrors[baseField] as Record<string, string>[];
+      const [index, item] = [parseInt(path[1]), path[2]];
+      if (!arrayErrors[index]) {
+        arrayErrors[index] = {};
+      }
+      arrayErrors[index][item] = getErrorMessage(error, path);
+    }
+    return formErrors;
+  }, []);
+
   const reset = () => {
     setValues(getDefaultValues(content));
     setErrors({});
   };
+
   const validate = useMemo(() => ajv.compile(validationSchema), [validationSchema]);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {

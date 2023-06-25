@@ -96,6 +96,7 @@ export const BasicForm: StoryObj<typeof Form<BasicFormValues>> = {
 };
 
 type ArrayFormValues = {
+  f0: string;
   array: Array<{
     f1: string;
     f2: number;
@@ -105,6 +106,11 @@ type ArrayFormValues = {
 export const ArrayForm: StoryObj<typeof Form<ArrayFormValues>> = {
   args: {
     content: {
+      f0: {
+        kind: 'text',
+        label: 'Field 0',
+        variant: 'short'
+      },
       array: {
         kind: 'array',
         label: 'Array Field',
@@ -119,14 +125,25 @@ export const ArrayForm: StoryObj<typeof Form<ArrayFormValues>> = {
             label: 'Field 2',
             min: 0,
             max: 10,
-            variant: 'slider',
+            variant: 'slider'
           }
         }
+      }
+    },
+    errorMessages: {
+      f0: 'F0 is a required field',
+      array: {
+        f1: 'F1 is a required field',
+        f2: 'F2 is a required field'
       }
     },
     validationSchema: {
       type: 'object',
       properties: {
+        f0: {
+          type: 'string',
+          minLength: 1
+        },
         array: {
           type: 'array',
           items: {
@@ -146,7 +163,7 @@ export const ArrayForm: StoryObj<typeof Form<ArrayFormValues>> = {
           }
         }
       },
-      required: ['array']
+      required: ['f0', 'array']
     },
     onSubmit: (data) => alert(JSON.stringify(data, null, 2))
   }
