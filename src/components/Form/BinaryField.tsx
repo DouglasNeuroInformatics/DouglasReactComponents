@@ -34,9 +34,9 @@ const Checkbox = (props: InnerProps) => (
 const RadioOption = ({ value, label }: { value: true | false; label?: string }) => {
   const { t } = useTranslation();
   return (
-    <RadioGroup.Option className="flex items-center" value={value}>
+    <RadioGroup.Option className="flex items-center text-slate-600 dark:text-slate-300" value={value}>
       <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white ring-1 ring-slate-200 hover:bg-slate-50 hover:shadow-xl dark:bg-slate-800 dark:ring-slate-500 dark:hover:bg-slate-700">
-        <CheckIcon className="duration-400 p-0.5 text-slate-600 opacity-0 transition-opacity ease-in-out ui-checked:opacity-100 dark:text-slate-300" />
+        <CheckIcon className="duration-400 p-0.5 opacity-0 transition-opacity ease-in-out ui-checked:opacity-100" />
       </div>
       <span className="ms-2">{label ?? t(`form.radio.labels.${value}`)}</span>
     </RadioGroup.Option>
