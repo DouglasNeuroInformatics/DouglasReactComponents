@@ -23,21 +23,24 @@ import { PrimitiveFormField, PrimitiveFormFieldProps } from './PrimitiveFormFiel
 import { FormErrors, FormValues, NullableArrayFieldValue, NullablePrimitiveFieldValue } from './types';
 import { getDefaultValues } from './utils';
 
+/** Custom error messages to be supplied for each field */
+type ErrorMessages<T extends FormInstrumentData> = {
+  [K in keyof T]?: T[K] extends PrimitiveFieldValue
+    ? string
+    : T[K] extends ArrayFieldValue
+    ? {
+        [P in keyof T[K][number]]?: string;
+      }
+    : never;
+};
+
 interface FormProps<T extends FormInstrumentData> {
   content: FormInstrumentContent<T>;
   className?: string;
   initialValues?: FormValues<T> | null;
   resetBtn?: boolean;
   submitBtnLabel?: string;
-  errorMessages?: {
-    [K in keyof T]?: T[K] extends PrimitiveFieldValue
-      ? string
-      : T[K] extends ArrayFieldValue
-      ? {
-          [P in keyof T[K][number]]?: string;
-        }
-      : never;
-  };
+  errorMessages?: string | ErrorMessages<T>;
   validationSchema: JSONSchemaType<T>;
   onSubmit: (data: T) => void;
 }
@@ -66,7 +69,9 @@ const FormComponent = <T extends FormInstrumentData>({
     const getErrorMessage = (error: ErrorObject, path: string[]): string => {
       const defaultMessage = `${error.message ?? t('form.errors.unknown')}`;
       const [k1, k2]: [string?, string?] = [path[0], path[2]];
-      if (typeof errorMessages?.[k1] === 'string') {
+      if (typeof errorMessages === 'string') {
+        return errorMessages;
+      } else if (typeof errorMessages?.[k1] === 'string') {
         return errorMessages[k1] as string;
       } else if (errorMessages?.[k1] instanceof Object) {
         return (errorMessages[k1] as Record<string, string | undefined>)[k2] ?? defaultMessage;
