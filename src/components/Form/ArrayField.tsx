@@ -16,8 +16,6 @@ export const ArrayField = ({ label, fieldset, error, value: arrayValue, setValue
     setArrayValue([...arrayValue, Object.fromEntries(Object.keys(fieldset).map((fieldName) => [fieldName, null]))]);
   };
 
-  console.error(error);
-
   const removeField = () => {
     if (arrayValue.length > 1) {
       arrayValue.pop();
