@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 import type { Preview } from '@storybook/react';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { LanguageIcon, MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 
 import './tailwind.css';
+import i18n from '../src/services/i18n';
 
 const preview: Preview = {
   decorators: [
     (Story) => {
       const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
-      const handleToggle = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+      const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
+
+      const toggleLanguage = () => i18n.changeLanguage(i18n.resolvedLanguage === 'en' ? 'fr' : 'en');
 
       useEffect(() => {
         const iFrameRoot = document.querySelector('.sb-show-main')?.parentNode as HTMLElement;
@@ -23,15 +26,23 @@ const preview: Preview = {
 
       return (
         <div className="h-screen w-screen">
-          <div className="absolute right-0 top-0 z-50 w-fit p-2">
+          <div className="right-6 absolute top-0 z-50 flex w-fit gap-2 py-2">
             <button
               className="w-full rounded-full bg-slate-600 p-2 text-white transition-transform hover:bg-slate-500"
-              onClick={handleToggle}
+              onClick={toggleTheme}
             >
-              {theme === 'dark' ? <SunIcon height={24} width={24} /> : <MoonIcon height={24} width={24} />}
+              {theme === 'dark' ? <SunIcon className="h-6 w-6" /> : <MoonIcon height={24} width={24} />}
+            </button>
+            <button
+              className="w-full rounded-full bg-slate-600 p-2 text-white transition-transform hover:bg-slate-500"
+              onClick={toggleLanguage}
+            >
+              <LanguageIcon className="h-6 w-6" />
             </button>
           </div>
-          <Story />
+          <div className="h-full w-full p-6 pt-14">
+            <Story />
+          </div>
         </div>
       );
     }
