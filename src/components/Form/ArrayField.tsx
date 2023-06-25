@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { ArrayFormField } from '@douglasneuroinformatics/common';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '../Button';
 
@@ -12,6 +13,8 @@ import { BaseFieldProps, NullableArrayFieldValue, NullablePrimitiveFieldValue } 
 export type ArrayFieldProps = BaseFieldProps<NullableArrayFieldValue> & ArrayFormField;
 
 export const ArrayField = ({ label, fieldset, error, value: arrayValue, setValue: setArrayValue }: ArrayFieldProps) => {
+  const { t } = useTranslation();
+
   const appendField = () => {
     setArrayValue([...arrayValue, Object.fromEntries(Object.keys(fieldset).map((fieldName) => [fieldName, null]))]);
   };
@@ -50,8 +53,8 @@ export const ArrayField = ({ label, fieldset, error, value: arrayValue, setValue
         </div>
       ))}
       <div className="mb-5 flex gap-5">
-        <Button label="Append" type="button" onClick={appendField} />
-        <Button label="Remove" type="button" onClick={removeField} />
+        <Button label={t('form.append')} type="button" onClick={appendField} />
+        <Button label={t('form.remove')} type="button" variant="secondary" onClick={removeField} />
       </div>
     </div>
   );
