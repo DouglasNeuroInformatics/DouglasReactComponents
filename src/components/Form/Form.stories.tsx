@@ -72,10 +72,6 @@ export const BasicForm: StoryObj<typeof Form<BasicFormValues>> = {
           c: 'Option C'
         }
       },
-      date: {
-        kind: 'date',
-        label: 'Date'
-      },
       binaryCheck: {
         kind: 'binary',
         label: 'Binary',
@@ -85,6 +81,10 @@ export const BasicForm: StoryObj<typeof Form<BasicFormValues>> = {
         kind: 'binary',
         label: 'Binary',
         variant: 'radio'
+      },
+      date: {
+        kind: 'date',
+        label: 'Date'
       }
     },
     validationSchema: {
